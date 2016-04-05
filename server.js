@@ -15,6 +15,10 @@ app.use('/vendor', express.static(__dirname + '/bower_components'));
 var controllers = require('./controllers');
 
 
+
+var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
+
 /**********
  * ROUTES *
  **********/
@@ -33,6 +37,10 @@ app.get('/', function homepage (req, res) {
  */
 
 app.get('/api', controllers.api.index);
+app.get('/api/albums', controllers.albums.index);
+app.post('/api/albums', controllers.albums.create);
+
+
 
 /**********
  * SERVER *

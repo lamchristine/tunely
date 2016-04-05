@@ -17,6 +17,8 @@
 
     <!-- APPLICATION SCRIPTS -->
     <script src="scripts/app.js"></script>
+
+
   </head>
   <body>
     <div class="jumbotron">
@@ -25,6 +27,78 @@
         <p>Your music binder!</p>
       </div>
     </div>
+
+    <div class="container">
+      <div class="row">
+
+        <!-- BEGIN FORM SAMPLE -->
+
+    <section id='album-form' class="container">
+      <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+
+        <form class="form-horizontal">
+          <fieldset>
+
+            <!-- Form Name -->
+            <legend>Add New Album</legend>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="name">Album Name</label>
+              <div class="col-md-4">
+              <input id="name" name="name" type="text" placeholder="" class="form-control input-md" required="true">
+
+              </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="artistName">Artist Name</label>
+              <div class="col-md-4">
+              <input id="textinput" name="artistName" type="text" placeholder="" class="form-control input-md" required="true">
+
+              </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="releaseDate">Release Date</label>
+              <div class="col-md-4">
+              <input id="releaseDate" name="releaseDate" type="text" placeholder="1992" class="form-control input-md" required="true">
+
+              </div>
+            </div>
+
+            <!-- Textarea -->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="genres">Genres (separated by commas)</label>
+              <div class="col-md-4">
+                <textarea class="form-control" id="genres" name="genres" required="true">rock, pop</textarea>
+              </div>
+            </div>
+
+
+            <!-- Button -->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="singlebutton">Save Album</label>
+              <div class="col-md-4">
+                <button id="singlebutton" name="singlebutton" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+      </div>
+    </section>
+
+     <!--   END FORM SAMPLE -->
+</div>
+</div>
+
+
+
+
 
     <section class="container">
       <div class="row">
@@ -39,6 +113,7 @@
 
 
           <!-- one album -->
+
           <div class="row album">
 
             <div class="col-md-10 col-md-offset-1">
@@ -47,6 +122,8 @@
 
 
                 <!-- begin album internal row -->
+                <script id="albums-template" type="text/x-handlebars-template">
+
                   <div class='row'>
                     <div class="col-md-3 col-xs-12 thumbnail album-art">
                       <img src="images/800x800.png" alt="album image">
@@ -56,22 +133,23 @@
                       <ul class="list-group">
                         <li class="list-group-item">
                           <h4 class='inline-header'>Album Name:</h4>
-                          <span class='album-name'>Ladyhawke</span>
+                          <span class='album-name'>{{name}}</span>
                         </li>
 
                         <li class="list-group-item">
-                          <h4 class='inline-header'>Artist Name:</h4>
-                          <span class='artist-name'>Ladyhawke</span>
+                          <h4 class='inline-header'>Artist Name: </h4>
+                          <span class='artist-name'>{{artistName}} </span>
                         </li>
 
                         <li class="list-group-item">
                           <h4 class='inline-header'>Released date:</h4>
-                          <span class='album-releaseDate'>2008, November 18</span>
+                          <span class='album-releaseDate'>{{releaseDate}}</span>
                         </li>
                       </ul>
                     </div>
-
                   </div>
+
+                  </script>
                   <!-- end of album internal row -->
 
                   <div class='panel-footer'>
