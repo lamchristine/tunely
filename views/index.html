@@ -71,10 +71,13 @@
             </div>
 
             <!-- Textarea -->
-            <div class="form-group">
+            <div class="form-group" id="genresForm">
               <label class="col-md-4 control-label" for="genres">Genres (separated by commas)</label>
               <div class="col-md-4">
-                <textarea class="form-control" id="genres" name="genres" required="true">rock, pop</textarea>
+                <input type="text" class="form-control" id="genres" name="input[]" required="true">
+              </div>
+              <div class="col-md-1">
+                <button type="button" id="add" class="btn btn-default"><span class="glyphicon glyphicon-plus" aria-hidden="true"></button>
               </div>
             </div>
 
@@ -107,6 +110,7 @@
         </div>
       </div>
       <!-- albums! -->
+
       <div id='albums'>
 
 
@@ -114,7 +118,8 @@
 
           <!-- one album -->
 
-          <div class="row album">
+        <script id="albums-template" type="text/x-handlebars-template">
+          <div class="row album" data-album-id={{_id}}>
 
             <div class="col-md-10 col-md-offset-1">
               <div class="panel panel-default">
@@ -122,7 +127,6 @@
 
 
                 <!-- begin album internal row -->
-                <script id="albums-template" type="text/x-handlebars-template">
 
                   <div class='row'>
                     <div class="col-md-3 col-xs-12 thumbnail album-art">
@@ -145,20 +149,33 @@
                           <h4 class='inline-header'>Released date:</h4>
                           <span class='album-releaseDate'>{{releaseDate}}</span>
                         </li>
+
+                        <li class="list-group-item">
+
+                          <h4 class="inline-header">Songs:</h4>
+                          {{#each songs}}
+                          <span><br>({{trackNumber}}) {{name}} <br></span>
+                          {{/each}}
+                        </li>
                       </ul>
                     </div>
                   </div>
 
-                  </script>
+
                   <!-- end of album internal row -->
 
                   <div class='panel-footer'>
-                  </div>
+                    <div class='panel-footer'>
+                      <button class='btn btn-primary add-song'>Add Song</button>
+                    </div>
 
+                  </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+          </script>
           <!-- end one album -->
 
 
@@ -177,12 +194,12 @@
           </div>
           <div class="modal-body">
 
-            <fieldset class='form-horizontal'>
+            <fieldset id="songsong" class='form-horizontal'>
               <!-- Text input-->
               <div class="form-group">
                 <label class="col-md-4 control-label" for="songName">Song Name</label>
                 <div class="col-md-4">
-                  <input id="songName" name="songName" type="text" placeholder="" class="form-control input-md" required="">
+                  <input id="songName" name="name" type="text" placeholder="" class="form-control input-md" required="">
                 </div>
               </div>
 
